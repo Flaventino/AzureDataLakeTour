@@ -37,13 +37,31 @@ resource "azurerm_resource_group" "ResourcesGroup" {
 #   location = var.ResourceGroupLocation
 # }
 
-# DATA LAKE SETTING UP (created as a 'special' storage account with Hierarchical Namespace Enabled)
-resource "azurerm_storage_account" "storage" {
+# BASIC BLOB STORAGE SETTING UP
+# >>> created as a 'standard' storage account
+resource "azurerm_storage_account" "BlobStorage" {
+  name                      = var.BasicBlobStorageName
+  resource_group_name       = azurerm_resource_group.ResourcesGroup.name
+  location                  = azurerm_resource_group.ResourcesGroup.location
+  account_tier              = "Standard"
+  account_replication_type  = "LRS"
+  access_tier               = "Hot" # 'hot' means frequent accessed data
+
+  # Keeps standard storage account
+  account_kind              = "BlobStorage"
+  is_hns_enabled            = false # Hierarchical Namespace not required here.
+}
+
+
+# DATA LAKE SETTING UP
+# >>> created as a 'standard' storage account with Hierarchical Namespace Enabled
+resource "azurerm_storage_account" "DataLake" {
   name                      = var.DataLakeName
   resource_group_name       = azurerm_resource_group.ResourcesGroup.name
   location                  = azurerm_resource_group.ResourcesGroup.location
   account_tier              = "Standard"
   account_replication_type  = "LRS"
+  access_tier               = "Hot" # 'hot' means frequent accessed data
 
   # Changes standard storage account into a data lake type storage
   account_kind              = "StorageV2"

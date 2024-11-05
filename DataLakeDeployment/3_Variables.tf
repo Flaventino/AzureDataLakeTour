@@ -10,5 +10,10 @@ variable "ResourceGroupLocation" {
 
 variable "DataLakeName" {
     type        = string
-    description = "Name to give the datalake"
+    description = "Name to give the datalake (which essentially is a special storage account)"
+}
+
+variable "BasicBlobStorageName" {
+    type        = string
+    description = "Name to give the basic blob storage (which essentially is a standard storage acount)"
 }
