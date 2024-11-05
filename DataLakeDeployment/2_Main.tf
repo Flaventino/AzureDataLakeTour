@@ -1,41 +1,9 @@
-
-
-
 # RESOURCES GROUP SETUP
 resource "azurerm_resource_group" "ResourcesGroup" {
     name        = var.ResourceGroupName
     location    = var.ResourceGroupLocation
 }
 
-
-
-
-# # Step 1: Provider configuration
-# provider "azurerm" {
-#   features {}
-# }
-
-# # Step 2: Define Variables (Optional)
-# variable "resource_group_name" {
-#   default = "myResourceGroup"
-# }
-
-# variable "location" {
-#   default = "East US"
-# }
-
-# variable "storage_account_name" {
-#   default = "mystorageaccountgen2"  # Must be unique
-# }
-
-# variable "file_system_name" {
-#   default = "mydatalakefilesystem"
-# }
-
-# resource "azurerm_resource_group" "rg" {
-#   name     = var.StorageAccountName
-#   location = var.ResourceGroupLocation
-# }
 
 # BASIC BLOB STORAGE SETTING UP
 # >>> created as a 'standard' storage account.
@@ -79,6 +47,15 @@ resource "azurerm_storage_data_lake_gen2_path" "datastorageDir1" {
   storage_account_id = azurerm_storage_account.DataLake.id
   resource           = "directory"    # Resource type. So 'directory' here!
 }
+# >>> Adds a directory called "input_data_portal_images" whithin the "datastorage" container.
+resource "azurerm_storage_data_lake_gen2_path" "datastorageDir2" {
+  path               = "input_data_portal_images"
+  filesystem_name    = azurerm_storage_data_lake_gen2_filesystem.datastorage.name
+  storage_account_id = azurerm_storage_account.DataLake.id
+  resource           = "directory"    # Resource type. So 'directory' here!
+}
+
+
 
 # output "storage_account_id" {
 #   value = azurerm_storage_account.storage.id
