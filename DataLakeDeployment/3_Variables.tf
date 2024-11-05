@@ -7,3 +7,8 @@ variable "ResourceGroupLocation" {
     type        = string
     description = "Geographical location where the resources group will be created"
 }
+
+variable "StorageAccountName" {
+    type        = string
+    description = "Name to give the datalake"
+}

@@ -32,25 +32,23 @@ resource "azurerm_resource_group" "ResourcesGroup" {
 #   default = "mydatalakefilesystem"
 # }
 
-# # Step 3: Create Resource Group
 # resource "azurerm_resource_group" "rg" {
-#   name     = var.resource_group_name
-#   location = var.location
+#   name     = var.StorageAccountName
+#   location = var.ResourceGroupLocation
 # }
 
-# # Step 4: Create Storage Account with Data Lake Gen2 (Hierarchical Namespace Enabled)
-# resource "azurerm_storage_account" "storage" {
-#   name                     = var.storage_account_name
-#   resource_group_name      = azurerm_resource_group.rg.name
-#   location                 = azurerm_resource_group.rg.location
-#   account_tier             = "Standard"
-#   account_replication_type = "LRS"
-#   kind                     = "StorageV2"
-#   enable_https_traffic_only = true
+# DATA LAKE SETTING UP (created as a 'special' storage account with Hierarchical Namespace Enabled)
+resource "azurerm_storage_account" "storage" {
+  name                      = var.StorageAccountName
+  resource_group_name       = azurerm_resource_group.ResourcesGroup.name
+  location                  = azurerm_resource_group.ResourcesGroup.location
+  account_tier              = "Standard"
+  account_replication_type  = "LRS"
 
-#   # Enabling Hierarchical Namespace is necessary for Data Lake Gen2
-#   is_hns_enabled = true
-# }
+  # Changes standard storage account into a data lake type storage
+  account_kind              = "StorageV2"
+  is_hns_enabled            = true # Enabling Hierarchical Namespace as it is necessary for Data Lake Gen2
+}
 
 # # Step 5: Create a File System (Container) within the Storage Account
 # resource "azurerm_storage_data_lake_gen2_filesystem" "filesystem" {
