@@ -39,7 +39,7 @@ resource "azurerm_resource_group" "ResourcesGroup" {
 
 # DATA LAKE SETTING UP (created as a 'special' storage account with Hierarchical Namespace Enabled)
 resource "azurerm_storage_account" "storage" {
-  name                      = var.StorageAccountName
+  name                      = var.DataLakeName
   resource_group_name       = azurerm_resource_group.ResourcesGroup.name
   location                  = azurerm_resource_group.ResourcesGroup.location
   account_tier              = "Standard"
