@@ -6,7 +6,7 @@ resource "azurerm_resource_group" "ResourcesGroup" {
 
 
 
-# BASIC BLOB STORAGE SETTING UP
+# BASIC BLOB STORAGE SETUP
 # >>> created as a 'standard' storage account.
 resource "azurerm_storage_account" "BlobStorage" {
   name                      = var.BasicBlobStorageName
