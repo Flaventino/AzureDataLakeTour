@@ -59,17 +59,3 @@ resource "azurerm_storage_data_lake_gen2_path" "datastorageDir2" {
   storage_account_id = azurerm_storage_account.DataLake.id
   resource           = "directory"    # Resource type. So 'directory' here!
 }
-
-
-
-# output "storage_account_id" {
-#   value = azurerm_storage_account.storage.id
-# }
-
-# output "file_system_name" {
-#   value = azurerm_storage_data_lake_gen2_filesystem.filesystem.name
-# }
-
-# output "file_system_id" {
-#   value = azurerm_storage_data_lake_gen2_filesystem.filesystem.id
-# }
