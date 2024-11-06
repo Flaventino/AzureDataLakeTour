@@ -59,3 +59,11 @@ resource "azurerm_storage_data_lake_gen2_path" "datastorageDir2" {
   storage_account_id = azurerm_storage_account.DataLake.id
   resource           = "directory"    # Resource type. So 'directory' here!
 }
+
+# >>> Adds a directory called "input_data_azcopy" whithin the "datastorage" container.
+resource "azurerm_storage_data_lake_gen2_path" "datastorageDir2" {
+  path               = "input_data_azcopy"
+  filesystem_name    = azurerm_storage_data_lake_gen2_filesystem.datastorage.name
+  storage_account_id = azurerm_storage_account.DataLake.id
+  resource           = "directory"    # Resource type. So 'directory' here!
+}
