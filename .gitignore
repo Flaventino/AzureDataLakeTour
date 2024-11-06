@@ -169,3 +169,11 @@ cython_debug/
 .terraform.lock.hcl
 terraform.tfstate
 terraform.tfstate.backup
+
+# Resources files
+# >> D
+Resources/*
+# Resources/sample_data/*
+# !.gitkeep
+# /Resources/Images/
+#!.gitkeep
