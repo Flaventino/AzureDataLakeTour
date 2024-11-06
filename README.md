@@ -13,4 +13,4 @@ However, if ever you want to use it for your own.
     (Caution: To be executed only after a terraform destroy call.)
 
 ## Resources location
-A directory called 'Resources' is on the project root
+A directory called 'Resources' is on the project root. Its purpose is to collect all testing files used to test the data lake and data factory features. 
