@@ -1,10 +1,20 @@
 # AzureDataLakeTour
-Exploration of the a data lake setting up and use on Azure cloud
+Exploration of a basic azure data lake setting up process and its use (cloud environment: azure)
+
+## Context
+The main purpose here is to create some resources on azure.
+The main goal is to create them using azure web interface but we will mainly do it using terraform.
+Thus we will be abble to manage more easily the life cycle of the created resources as well as the protential cost (which should not be huge anyway)
 
 ## Main tips
 Basically, this repo is not intended to be reused by anyone except me.
 However, if ever you want to use it for your own.
 1. Before running this repo, make sure you get an azure account and sign in to it using your credentials.
+    * Requirements (to be installed on your machine):
+        * Azure cli
+        * Azure azcopy
+        * Terraform
+        * Any tool you like to run bash scripts (within the project directories at least)
 2. Check `terraform.tfvars` file to customize resource names.
     * If ever you want to customize deeper then feel free to explore and change the `2_main.tf` file content.
 3. Two additional script are offered in `DataLakeDeployment` directory.
